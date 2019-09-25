@@ -7,8 +7,9 @@ import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
+
+import androidx.annotation.RequiresApi;
 
 import com.luck.picture.lib.R;
 import com.luck.picture.lib.entity.LocalMedia;
@@ -95,6 +96,7 @@ public final class PictureMimeType {
             case "image/gif":
             case "image/GIF":
                 return true;
+                default:break;
         }
         return false;
     }

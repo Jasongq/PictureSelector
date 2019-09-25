@@ -45,6 +45,7 @@ public class LightStatusBarUtils {
             case RomUtils.AvailableRomType.NA:
                 // N/A do nothing
                 break;
+                default:break;
         }
     }
 
