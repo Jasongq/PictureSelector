@@ -70,11 +70,10 @@
 
 ## 集成方式
 
-方式一 compile引入
-
+* 方式一 implementation引入<br>
 ```
 dependencies {
-    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
+     implementation 'com.github.Jasongq:PictureSelector:v2.2.5'
 }
 
 ```
@@ -85,29 +84,27 @@ dependencies {
 allprojects {
    repositories {
       jcenter()
-      maven { url 'https://jitpack.io' }
+           maven { url 'https://jitpack.io' }
    }
 }
 ```
 
-方式二 maven引入
-
+* 方式二 maven引入<br>
 step 1.
 ```
 <repositories>
-       <repository>
-       <id>jitpack.io</id>
-	<url>https://jitpack.io</url>
-       </repository>
- </repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 ```
 step 2.
 ```
-
 <dependency>
-      <groupId>com.github.LuckSiege.PictureSelector</groupId>
-      <artifactId>picture_library</artifactId>
-      <version>v2.2.4</version> 
+        <groupId>com.github.Jasongq</groupId>
+	     <artifactId>PictureSelector</artifactId>
+      <version>v2.2.5</version> 
 </dependency>
 
 ```
@@ -132,7 +129,18 @@ step 2.
  * 注意 从v2.1.3版本中，将不需要配制以下内容
  
  application下添加如下节点:
- 
+
+<!--AndroidX写法-->
+ <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+</provider>
+<!--Android support包写法-->
  <provider
       android:name="android.support.v4.content.FileProvider"
       android:authorities="${applicationId}.provider"
@@ -142,6 +150,7 @@ step 2.
          android:name="android.support.FILE_PROVIDER_PATHS"
          android:resource="@xml/file_paths" />
 </provider>
+
 
 注意：如已添加其他sdk或项目中已使用过provider节点，
 [请参考我的博客](http://blog.csdn.net/luck_mw/article/details/54970105)的解决方案
@@ -339,13 +348,16 @@ PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
 ## 更新日志
 
 # 当前版本：
+* v2.2.5
+1.升级AndroidX
+
+# 历史版本：
 * v2.2.4
 1.适配Android Q 版本
 2.修复Android Q多图裁剪失败问题
 3.升级glide、Luan 最新版本
 4.修复了部分已知问题
 
-# 历史版本：
 * v2.2.3
 * 1.修复沉浸式在部分机型标题栏遮挡情况
 
